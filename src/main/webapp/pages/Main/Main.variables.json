@@ -1,0 +1,87 @@
+{
+  "AssertTypeData" : {
+    "_id" : "wm-AssertTypeData-wm.Variable-1694425573145",
+    "name" : "AssertTypeData",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "name" : "EUR €",
+      "type" : "eur"
+    }, {
+      "name" : "GBP £",
+      "type" : "gbp"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "twoWayBinding" : false,
+    "saveInPhonegap" : false
+  },
+  "CreateAccountInfo" : {
+    "_id" : "wm-CreateAccountInfo-wm.ServiceVariable-1694149379702",
+    "name" : "CreateAccountInfo",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "idempotency-ref",
+      "value" : "test",
+      "type" : "string"
+    }, {
+      "target" : "body.profileId",
+      "value" : "bind:Widgets.weavr_managedAccountCreateForm1.dataoutput.profileId"
+    }, {
+      "target" : "body.currency",
+      "value" : "bind:Widgets.weavr_managedAccountCreateForm1.dataoutput.currency"
+    }, {
+      "target" : "body.friendlyName",
+      "value" : "bind:Widgets.weavr_managedAccountCreateForm1.dataoutput.friendlyName"
+    }, {
+      "target" : "body.tag",
+      "value" : "bind:Widgets.weavr_managedAccountCreateForm1.dataoutput.tag"
+    } ],
+    "type" : "com.brightbankdemo.weavr.ManagedAccount",
+    "service" : "weavr",
+    "operation" : "weavr_managedAccountCreate",
+    "operationId" : "weavr_managedAccountCreate",
+    "operationType" : "create",
+    "serviceType" : "OpenAPIService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Managed Accounts"
+  },
+  "JS_getManagedAccounts" : {
+    "_id" : "wm-JS_getManagedAccounts-wm.ServiceVariable-1694001443126",
+    "name" : "JS_getManagedAccounts",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "isList" : true,
+      "target" : "['state.blockedReason']",
+      "value" : "USER"
+    }, {
+      "isList" : true,
+      "target" : "['state.destroyedReason']",
+      "value" : "USER"
+    } ],
+    "type" : "com.brightbankdemo.weavr.ManagedAccountsGetResponse",
+    "service" : "weavr",
+    "operation" : "weavr_managedAccountsGet",
+    "operationId" : "weavr_managedAccountsGet",
+    "serviceType" : "OpenAPIService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Managed Accounts"
+  }
+}

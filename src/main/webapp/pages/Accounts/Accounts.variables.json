@@ -1,0 +1,52 @@
+{
+  "JS_getAccountTransactions" : {
+    "_id" : "wm-JS_getAccountTransactions-wm.ServiceVariable-1694408801151",
+    "name" : "JS_getAccountTransactions",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "100",
+      "type" : "string"
+    } ],
+    "type" : "com.brightbankdemo.weavr.Statement",
+    "service" : "weavr",
+    "operation" : "weavr_managedAccountStatement",
+    "operationId" : "weavr_managedAccountStatement",
+    "serviceType" : "OpenAPIService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Managed Accounts"
+  },
+  "JS_getManagedAccountById" : {
+    "_id" : "wm-JS_getManagedAccountById-wm.ServiceVariable-1694408149803",
+    "name" : "JS_getManagedAccountById",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "100",
+      "type" : "integer"
+    } ],
+    "type" : "com.brightbankdemo.weavr.ManagedAccount",
+    "service" : "weavr",
+    "operation" : "weavr_managedAccountGet",
+    "operationId" : "weavr_managedAccountGet",
+    "serviceType" : "OpenAPIService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Managed Accounts"
+  }
+}

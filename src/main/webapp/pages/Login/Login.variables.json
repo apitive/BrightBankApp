@@ -1,0 +1,32 @@
+{
+  "svLoginwithpassword" : {
+    "_id" : "wm-svLoginwithpassword-wm.ServiceVariable-1694591405360",
+    "name" : "svLoginwithpassword",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "email",
+      "value" : "bind:Widgets.form1.formWidgets.j_username.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "password",
+      "value" : "bind:Widgets.form1.formWidgets.j_password.datavalue",
+      "type" : "string"
+    } ],
+    "type" : "com.brightbankdemo.weavr.WeavrLoginWithPasswordResponse",
+    "service" : "weavr",
+    "operation" : "weavr_loginWithPassword",
+    "operationId" : "weavr_loginWithPassword",
+    "serviceType" : "OpenAPIService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "Actions.goToPage_Main.invoke()",
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "User Authentication"
+  }
+}

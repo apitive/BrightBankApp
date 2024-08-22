@@ -1,0 +1,6 @@
+{
+  "id" : "authService",
+  "type" : "authService",
+  "title" : "authService",
+  "mockEnabled" : false
+}

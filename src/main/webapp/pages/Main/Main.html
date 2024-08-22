@@ -1,0 +1,205 @@
+<wm-page name="mainpage" pagetitle="Main">
+    <wm-header content="header" name="header" height="auto"></wm-header>
+    <wm-top-nav name="topnav"></wm-top-nav>
+    <wm-content name="content">
+        <wm-left-panel columnwidth="2" name="leftpanel" content="leftnav"></wm-left-panel>
+        <wm-page-content columnwidth="12" name="mainContent" class="spacing-large">
+            <wm-layoutgrid name="layoutgrid1" class="spacing-base">
+                <wm-gridrow name="gridrow1">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn1">
+                        <wm-label name="label1" class="h2 font-medium" caption="Accounts"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn2" horizontalalign="right">
+                        <wm-button class="btn-secondary" caption="ADD ACCOUNT" type="button" name="buttonAddAccount" iconclass="wi wi-plus" on-click="Widgets.dialogAddAccount.open()" height="44px"></wm-button>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow2">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn4">
+                        <wm-list listclass="list-group" template="true" template-name="Business Card" itemsperrow="xs-1 sm-2 md-3 lg-3" class="list-card" statehandler="none" name="list1" dataset="bind:Variables.JS_getManagedAccounts.dataSet.accounts" navigation="Basic" paginationclass="btn-default"
+                            on-click="list1Click($event, widget)" nodatamessage="bind:servicehost==&quot;APIVendor(R)&quot;?&quot;Loading ledgers...&quot;:&quot;No Accounts found..&quot;" loadingdatamsg="bind:servicehost==&quot;APIVendor(R)&quot;?&quot;Loading ledgers...&quot;:&quot;Loading Accounts...&quot;"
+                            on-select="list1Select(widget, $data)" on-tap="list1Tap($event, widget)" pagesize="10" direction="vertical">
+                            <wm-listtemplate layout="media" name="listtemplate2">
+                                <wm-card name="card1" class="pointer" on-click="Actions.goToPage_Accounts.invoke()">
+                                    <wm-card-content name="card_content1">
+                                        <wm-layoutgrid name="layoutgrid2">
+                                            <wm-gridrow name="gridrow3">
+                                                <wm-gridcolumn columnwidth="8" name="gridcolumn5" class="col-xs-8">
+                                                    <wm-label caption="bind:Variables.JS_getManagedAccounts.dataSet.accounts[$i].tag" class="text-muted f-xxs-2" name="JobTitle"></wm-label>
+                                                    <wm-label name="Name" class="p f-sm font-semibold text-ellipsis" caption="bind:Variables.JS_getManagedAccounts.dataSet.accounts[$i].friendlyName" fontunit="em"></wm-label>
+                                                    <wm-label name="Name" class="p f-sm font-semibold text-ellipsis" caption="bind:Variables.JS_getManagedAccounts.dataSet.accounts[$i].id" fontunit="em"></wm-label>
+                                                    <wm-label name="label5" caption="bind:Variables.JS_getManagedAccounts.dataSet.accounts[$i].accountNumber" class="f-xs font-medium text-muted"></wm-label>
+                                                </wm-gridcolumn>
+                                                <wm-gridcolumn columnwidth="4" name="gridcolumn6" class="col-xs-1" horizontalalign="right">
+                                                    <wm-label padding="unset 0.5em" name="label4" class="pull-right account-currency" caption="bind:Widgets.list1.currentItem.currency==&quot;GBP&quot;?&quot;£&quot;:Widgets.list1.currentItem.currency==&quot;USD?&quot;?&quot;$&quot;: &quot;€&quot;" fontsize="14"
+                                                        margin="unset unset 0px unset" show="false"></wm-label>
+                                                    <wm-icon name="icon1" iconclass="bind:&quot;fa &quot; + (Widgets.list1.currentItem.currency==&quot;GBP&quot;?&quot;fa-gbp&quot;:Widgets.list1.currentItem.currency==&quot;USD?&quot;?&quot;fa-usd&quot;: &quot;fa-euro&quot;)" class="icon-lg" conditionalclass="bind:Widgets.list1.currentItem.currency==&quot;GBP&quot;?&quot;label-success&quot;:Widgets.list1.currentItem.currency==&quot;USD?&quot;?&quot;label-info&quot;: &quot;label-danger&quot;"></wm-icon>
+                                                </wm-gridcolumn>
+                                            </wm-gridrow>
+                                            <wm-gridrow name="gridrow5" padding="60px unset unset unset">
+                                                <wm-gridcolumn columnwidth="12" name="gridcolumn9">
+                                                    <wm-label name="Content" caption="bind:(Widgets.list1.currentItem.currency == 'GBP' ? '£ ': (Widgets.list1.currentItem.currency == 'USD') ? '$ ': '€ ')+ Widgets.list1.currentItem.balance+&quot;.00&quot;" class="h2" fontunit="px" fontsize="28" margin="0px unset unset unset"
+                                                        show="false"></wm-label>
+                                                    <wm-icon iconclass="bind:&quot;fa f-lg &quot; + (Widgets.list1.currentItem.currency==&quot;GBP&quot;?&quot;fa-gbp&quot;:Widgets.list1.currentItem.currency==&quot;USD?&quot;?&quot;fa-usd&quot;: &quot;fa-euro&quot;)" class="f-xl" name="icon2" caption="bind:Variables.JS_getManagedAccounts.dataSet.accounts[$i].balances.availableBalance"
+                                                        show="true" deferload="true"></wm-icon>
+                                                </wm-gridcolumn>
+                                            </wm-gridrow>
+                                        </wm-layoutgrid>
+                                    </wm-card-content>
+                                </wm-card>
+                            </wm-listtemplate>
+                        </wm-list>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-page-content>
+    </wm-content>
+    <!-- <wm-dialog dialogtype="design-dialog" modal="true" title="Create Account" name="dialogAddAccount" closable="false" showheader="false" class="wizard-dialog"><wm-layoutgrid name="layoutgrid2"><wm-gridrow name="gridrow3"><wm-gridcolumn columnwidth="3" name="gridcolumn5" padding="2em 4em"><wm-layoutgrid name="layoutgrid3" columns="1"><wm-gridrow name="gridrow7"><wm-gridcolumn columnwidth="12" name="gridcolumn13"><wm-picture name="picture1" picturesource="resources/images/imagelists/add-account.svg"></wm-picture></wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow8"><wm-gridcolumn columnwidth="12" name="gridcolumn14"><wm-label padding="unset 0.5em" name="label2" caption="Create Account" fontweight="bold" class="h3"></wm-label></wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow9"><wm-gridcolumn columnwidth="12" name="gridcolumn15"><wm-label padding="unset 0.5em" name="label3" caption="Digital bank accounts can hold single currency only" show="false"></wm-label></wm-gridcolumn></wm-gridrow></wm-layoutgrid></wm-gridcolumn><wm-gridcolumn columnwidth="9" name="gridcolumn6"><wm-label padding="unset 0.5em unset 1.5em" name="label4" caption="Create Account" fontweight="bold" class="h3"></wm-label><wm-spinner show="false" name="spinner1" iconclass="fa fa-spinner fa-spin fa-pull-left" type="icon" caption="Please wait... while we do the heavy lifting" class="spinnerStyles railsSpinner"></wm-spinner><wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="create" dataset="bind:Variables.CreateAccountInfo.dataSet" captionalign="left" name="weavr_managedAccountCreateForm1"><wm-layoutgrid columns="1" name="layoutgrid8"><wm-gridrow name="gridrow17"></wm-gridrow><wm-gridrow name="gridrow18"><wm-composite name="composite1"><wm-label class="h4 control-label" caption="Account Info" name="label11"></wm-label></wm-composite></wm-gridrow><wm-gridrow name="gridrow19"><wm-gridcolumn columnwidth="12" name="gridcolumn19"><wm-form-field readonly="false" name="body_currency" displayname="Currency" key="body.currency" type="string" show="true" widget="text" placeholder="Enter three digit code"></wm-form-field></wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow20"><wm-gridcolumn columnwidth="12" name="gridcolumn20"><wm-form-field readonly="false" name="body_friendlyName" displayname="Friendly Name" key="body.friendlyName" type="string" show="true" widget="text"></wm-form-field></wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow21"><wm-gridcolumn columnwidth="12" name="gridcolumn21_1"><wm-form-field readonly="false" name="body_profileId" displayname="Profile Id" key="body.profileId" type="string" show="true" widget="text"></wm-form-field></wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow22"><wm-gridcolumn columnwidth="12" name="gridcolumn22_1"><wm-form-field readonly="false" name="body_tag" displayname="Tag" key="body.tag" type="string" show="true" widget="text"></wm-form-field></wm-gridcolumn></wm-gridrow></wm-layoutgrid><wm-form-action key="reset" class="form-reset btn-default" iconclass="wi wi-refresh" display-name="Reset" type="reset"></wm-form-action></wm-form><wm-button class="btn-default" caption="Create" type="button" margin="unset" name="button4" on-click="Variables.CreateAccountInfo.invoke();Widgets.dialogAccountSuccess.open()"></wm-button></wm-gridcolumn></wm-gridrow></wm-layoutgrid></wm-dialog> -->
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Create Account" name="dialogAddAccount" closable="false" showheader="false" class="wizard-dialog">
+        <wm-layoutgrid name="layoutgrid2">
+            <wm-gridrow name="gridrow3">
+                <wm-gridcolumn columnwidth="3" name="gridcolumn5" class="dialog-left-panel">
+                    <wm-layoutgrid name="layoutgrid3" columns="1">
+                        <wm-gridrow name="gridrow7">
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn13">
+                                <wm-picture name="picture1" picturesource="resources/images/imagelists/add-account.svg" class="dialog-left-img"></wm-picture>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow8">
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn14">
+                                <wm-label name="label2" caption="Create Account" class="dialog-left-title"></wm-label>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow9">
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn15">
+                                <wm-label name="label3" caption="Digital bank accounts can hold single currency only" show="false" class="dialog-left-description"></wm-label>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="9" name="gridcolumn6" class="dialog-body-panel">
+                    <wm-label name="label4" caption="Create Account" class="dialog-body-title"></wm-label>
+                    <!-- <wm-prefab prefabname="Create_Account" name="Create_Account1" enduserid="bind:Widgets.Managed_Accounts1.accountprofileid" servicehost="APIVendor(W)" authtoken="bind:Variables.loggedInUser.dataSet.userAttributes.authtoken"
+                        on-ledgeradd="Widgets.Managed_Accounts1.refreshLedgers();Widgets.dialogAddAccount.close();Widgets.dialogAccountSuccess.open()" on-cancel="Widgets.dialogAddAccount.close()"></wm-prefab> -->
+                    <!-- <wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="post" captionalign="left" name="createLedgerForm" messagelayout="Inline" postmessage="" on-success="Widgets.dialogAccountSuccess.open()">
+<wm-layoutgrid columns="1" name="layoutgrid2">
+<wm-gridrow name="gridrow1">
+<wm-gridcolumn name="gridcolumn1" columnwidth="6" class="col-xs-12">
+<wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="post" dataset="bind:Variables.LedgerMetaData.dataSet" captionalign="left" name="body_ledger_meta">
+<wm-layoutgrid columns="1" name="layoutgrid4">
+<wm-gridrow name="gridrow13_1">
+<wm-gridcolumn columnwidth="12" name="gridcolumn13_1" class="col-xs-12">
+<wm-form-field name="ledgerName" readonly="false" displayname="bind:servicehost==&quot;APIVendor(R)&quot;?&quot;Give name to your ledger&quot;:&quot;Give your account a name&quot;" key="ledgerName" type="string" show="true" widget="text" inputtype="text"
+                                                        placeholder="Ex: Savings Account" required="true" validationmessage="Please provide a name for the ledger" viewmodewidget="default"></wm-form-field></wm-gridcolumn></wm-gridrow></wm-layoutgrid></wm-form>
+<wm-form errormessage="" captionposition="top" title="Form" enctype="application/x-www-form-urlencoded" method="create" dataset="bind:Variables.CreateAccountInfo.dataSet" captionalign="left" name="weavr_managedAccountCreateForm1">
+<wm-layoutgrid columns="1" name="layoutgrid8">
+<wm-gridrow name="gridrow20"></wm-gridrow>
+<wm-gridrow name="gridrow21">
+<wm-composite name="composite1">
+<wm-label class="h4 control-label" caption="body Details" name="label12"></wm-label></wm-composite></wm-gridrow>
+<wm-gridrow name="gridrow22">
+<wm-gridcolumn columnwidth="12" name="gridcolumn23_1">
+<wm-form-field readonly="false" name="body_currency" displayname="Currency" key="body.currency" type="string" show="true" widget="text"></wm-form-field></wm-gridcolumn></wm-gridrow>
+<wm-gridrow name="gridrow23">
+<wm-gridcolumn columnwidth="12" name="gridcolumn24_1">
+<wm-form-field readonly="false" name="body_friendlyName" displayname="Friendly Name" key="body.friendlyName" type="string" show="true" widget="text"></wm-form-field></wm-gridcolumn></wm-gridrow>
+<wm-gridrow name="gridrow24">
+<wm-gridcolumn columnwidth="12" name="gridcolumn25">
+<wm-form-field readonly="false" name="body_profileId" displayname="Profile Id" key="body.profileId" type="string" show="true" widget="text"></wm-form-field></wm-gridcolumn></wm-gridrow>
+<wm-gridrow name="gridrow25">
+<wm-gridcolumn columnwidth="12" name="gridcolumn26">
+<wm-form-field readonly="false" name="body_tag" displayname="Tag" key="body.tag" type="string" show="true" widget="text"></wm-form-field></wm-gridcolumn></wm-gridrow></wm-layoutgrid>
+<wm-form-action key="reset" class="form-reset btn-default" iconclass="wi wi-refresh" display-name="Reset" type="reset"></wm-form-action>
+<wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" type="submit"></wm-form-action></wm-form></wm-gridcolumn></wm-gridrow>
+<wm-gridrow name="gridrow11">
+<wm-gridcolumn columnwidth="9" name="gridcolumn9" class="col-xs-12">
+<wm-form-field name="body_asset_type" displayname="Select Currency" show="true" type="string" key="body.asset_type" widget="switch" dataset="EUR €,GBP £" defaultvalue="EUR €"></wm-form-field></wm-gridcolumn></wm-gridrow>
+<wm-gridrow name="gridrow12">
+<wm-gridcolumn columnwidth="6" name="gridcolumn10" class="col-xs-12">
+<wm-form-field name="body_ledger_primary_use_types" displayname="bind:servicehost==&quot;APIVendor(R)&quot;?&quot;Ledger Primary Use&quot;:&quot;Primary Use&quot;" show="true" required="false" type="string" key="body.ledger_primary_use_types" widget="switch"
+                        dataset="Payments,Deposit,Settlement" defaultvalue="Payments"></wm-form-field></wm-gridcolumn></wm-gridrow>
+<wm-gridrow name="gridrow1">
+<wm-gridcolumn name="gridcolumn1" columnwidth="12">
+<wm-form-field name="body_profileId" displayname="Profile Id" show="false" placeholder="Enter text" type="string" key="body.profileId" widget="text" inputtype="text"></wm-form-field></wm-gridcolumn></wm-gridrow>
+<wm-gridrow name="gridrow2">
+<wm-gridcolumn name="gridcolumn2" columnwidth="12">
+<wm-form-field name="body_currency" key="body.currency" type="string" displayname="Currency" widget="text" show="false"></wm-form-field></wm-gridcolumn></wm-gridrow>
+<wm-gridrow name="gridrow3">
+<wm-gridcolumn name="gridcolumn3" columnwidth="12">
+<wm-form-field name="body_friendlyName" key="body.friendlyName" type="string" displayname="Friendly Name" widget="text" show="false"></wm-form-field></wm-gridcolumn></wm-gridrow></wm-layoutgrid>
+<wm-form-field name="body_partner_product" displayname="Partner Product" show="false" placeholder="Enter value" type="string" key="body.partner_product" widget="text" inputtype="text"></wm-form-field>
+<wm-form-field name="body_ledger_who_owns_assets" displayname="Ledger Who Owns Assets" show="false" placeholder="Enter value" required="true" type="string" key="body.ledger_who_owns_assets" widget="text" inputtype="text"></wm-form-field>
+<wm-form-field name="body_ledger_type" displayname="Ledger Type" show="false" placeholder="Enter value" required="true" type="string" key="body.ledger_type" widget="text" inputtype="text"></wm-form-field>
+<wm-form-field name="body_ledger_t_and_cs_country_of_jurisdiction" displayname="Ledger T And Cs Country Of Jurisdiction" show="false" placeholder="Enter value" type="string" key="body.ledger_t_and_cs_country_of_jurisdiction" widget="text" inputtype="text"></wm-form-field>
+<wm-form-field name="body_holder_id" displayname="Holder Id" show="false" placeholder="Enter value" required="true" type="string" key="body.holder_id" widget="text" inputtype="text"></wm-form-field>
+<wm-form-field name="body_asset_class" displayname="Asset Class" show="false" placeholder="Enter value" type="string" key="body.asset_class" widget="text" inputtype="text"></wm-form-field>
+<wm-form-action key="reset" display-name="Cancel" show="true" class="form-reset btn-default" iconclass="" title="Cancel" action="createLedgerForm_resetAction($event)" shortcutkey="" disabled="false" widget-type="button" type="button" update-mode="true"></wm-form-action>
+<wm-form-action key="save" display-name="Create" show="true" class="form-save btn-secondary" iconclass="" title="Create" action="Variables.CreateAccountInfo.invoke()" shortcutkey="" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action></wm-form> -->
+                    <wm-spinner show="false" name="spinner1" iconclass="fa fa-spinner fa-spin fa-pull-left" type="icon" caption="Please wait... while we do the heavy lifting" class="spinnerStyles railsSpinner"></wm-spinner>
+                    <wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="create" dataset="bind:Variables.CreateAccountInfo.dataSet" captionalign="left" name="weavr_managedAccountCreateForm1" on-submit="Actions.goToPage_Main.invoke()"
+                        on-success="Widgets.dialogAccountSuccess.open()">
+                        <wm-layoutgrid columns="1" name="layoutgrid6">
+                            <wm-gridrow name="gridrow13_1"></wm-gridrow>
+                            <wm-gridrow name="gridrow14_1">
+                                <wm-composite name="composite1">
+                                    <wm-label class="h4 control-label" caption="Account Details" name="label12"></wm-label>
+                                </wm-composite>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow15_1">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn16">
+                                    <wm-form-field readonly="false" name="body_currency" displayname="Currency" key="body.currency" type="string" show="true" widget="text"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow16_1">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn17">
+                                    <wm-form-field readonly="false" name="body_friendlyName" displayname="Friendly Name" key="body.friendlyName" type="string" show="true" widget="text"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow17">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn18">
+                                    <wm-form-field readonly="false" name="body_profileId" displayname="Profile Id" key="body.profileId" type="string" show="true" widget="text"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow18">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn19">
+                                    <wm-form-field readonly="false" name="body_tag" displayname="Tag" key="body.tag" type="string" show="true" widget="text"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                        <wm-form-action key="reset" class="form-reset btn-default" iconclass="wi wi-refresh" display-name="Reset" type="reset"></wm-form-action>
+                        <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" type="submit"></wm-form-action>
+                    </wm-form>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="" iconclass="wi wi-file-text" name="dialogAccountSuccess" showheader="false" class="wizard-dialog">
+        <wm-container name="container1" class="fullbleed-notification-popup">
+            <wm-container name="container5">
+                <wm-layoutgrid name="layoutgrid4" columns="1">
+                    <wm-gridrow name="gridrow13">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn21" horizontalalign="center">
+                            <wm-picture name="picture2" backgroundimage="resources/images/imagelists/icon-bg.png" picturesource="resources/images/imagelists/add-account.svg"></wm-picture>
+                            <wm-picture name="picture3" width="30px" height="30" margin="7em unset unset -2em" picturesource="resources/images/imagelists/circle-green-tick.png"></wm-picture>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow14">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn22" horizontalalign="center">
+                            <wm-label padding="unset 0.5em" name="label9" caption="Account created Succesful!" class="h2"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow15">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn23" horizontalalign="center">
+                            <wm-button class="btn-secondary" caption="OKAY" type="button" margin="unset 0.5em" name="button3" width="113px" height="44px" on-click="Widgets.dialogAccountSuccess.close();Widgets.dialogAddAccount.close()"></wm-button>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow16">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn24"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-container>
+        </wm-container>
+        <wm-dialogactions name="dialogactions1" show="false">
+            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button2"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+</wm-page>

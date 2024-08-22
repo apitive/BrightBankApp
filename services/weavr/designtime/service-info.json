@@ -1,0 +1,6 @@
+{
+  "id" : "weavr",
+  "type" : "OpenAPIService",
+  "title" : "weavr",
+  "mockEnabled" : false
+}

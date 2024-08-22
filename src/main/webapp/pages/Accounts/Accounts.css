@@ -1,0 +1,11 @@
+.custom {
+    border-radius: 16px;
+    background-color: rgb(41, 28, 80) !important;
+    width: 32px;
+    heigth: 32px !important;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 15px;
+    color: white !important;
+}

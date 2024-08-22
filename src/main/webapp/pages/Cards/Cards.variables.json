@@ -1,0 +1,27 @@
+{
+  "svGetManagedCards" : {
+    "_id" : "wm-svGetManagedCards-wm.ServiceVariable-1694505539380",
+    "name" : "svGetManagedCards",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "10",
+      "type" : "string"
+    } ],
+    "type" : "com.brightbankdemo.weavr.Statement",
+    "service" : "weavr",
+    "operation" : "weavr_managedCardStatement",
+    "operationId" : "weavr_managedCardStatement",
+    "serviceType" : "OpenAPIService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Managed Cards"
+  }
+}
