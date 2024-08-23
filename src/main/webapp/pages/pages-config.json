@@ -23,6 +23,10 @@
   "type" : "FOOTER",
   "params" : [ ]
 }, {
+  "name" : "fundTransfer",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "header",
   "type" : "HEADER",
   "params" : [ ]

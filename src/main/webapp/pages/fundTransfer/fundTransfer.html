@@ -1,0 +1,39 @@
+<wm-page pagetitle="Fund Transfer">
+    <wm-header content="header"></wm-header>
+    <wm-content>
+        <wm-left-panel columnwidth="2" content="leftnav"></wm-left-panel>
+        <wm-page-content columnwidth="10">
+            <wm-container name="fundTransferContainer" class="panel p-md">
+                <wm-layoutgrid name="layoutgrid1" class="spacing-base">
+                    <wm-gridrow name="gridrow1">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn1">
+                            <wm-label caption="Fund Transfer" class="f-m font-medium" name="labelFundTransfer"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow2">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn2">
+                            <wm-text name="fromAccount" caption="From Account" placeholder="Enter From Account ID" required="true"></wm-text>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn3">
+                            <wm-text name="toAccount" caption="To Account" placeholder="Enter To Account ID" required="true"></wm-text>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow3">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn4">
+                            <wm-text name="amount" caption="Amount" placeholder="Enter Amount" required="true"></wm-text>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn5">
+                            <wm-select name="currency" caption="Currency" dataset="Variables.AssertTypeData.dataSet" displayfield="name" datafield="type" required="true"></wm-select>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow4">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn6" horizontalalign="center">
+                            <wm-button caption="Transfer Funds" class="btn-primary" name="buttonTransferFunds" on-click="transferFunds"></wm-button>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-container>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer"></wm-footer>
+</wm-page>

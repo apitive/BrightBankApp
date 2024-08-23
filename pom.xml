@@ -33,6 +33,7 @@
                 <source>services/authService/src</source>
                 <source>services/securityService/src</source>
                 <source>services/weavr/src</source>
+                <source>services/weavrfundstransfer/src</source>
               </sources>
             </configuration>
           </execution>

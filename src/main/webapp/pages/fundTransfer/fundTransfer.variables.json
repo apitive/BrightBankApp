@@ -1,0 +1,35 @@
+{
+  "svTransferFunds" : {
+    "_id" : "wm-svTransferFunds-wm.ServiceVariable-1694591405360",
+    "name" : "svTransferFunds",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "body.fromAccountId",
+      "value" : "bind:Widgets.fromAccount.datavalue"
+    }, {
+      "target" : "body.toAccountId",
+      "value" : "bind:Widgets.toAccount.datavalue"
+    }, {
+      "target" : "body.amount",
+      "value" : "bind:Widgets.amount.datavalue"
+    }, {
+      "target" : "body.currency",
+      "value" : "bind:Widgets.currency.datavalue"
+    } ],
+    "type" : "com.brightbankdemo.weavr.TransferFundsRequest",
+    "service" : "weavr",
+    "operation" : "weavr_transferFunds",
+    "operationId" : "weavr_transferFunds",
+    "serviceType" : "OpenAPIService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Fund Transfer"
+  }
+}

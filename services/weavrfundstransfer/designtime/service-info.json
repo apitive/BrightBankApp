@@ -1,0 +1,6 @@
+{
+  "id" : "weavrfundstransfer",
+  "type" : "OpenAPIService",
+  "title" : "weavrfundstransfer",
+  "mockEnabled" : false
+}

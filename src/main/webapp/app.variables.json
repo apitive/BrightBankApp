@@ -37,6 +37,17 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
+  "goToPage_fundTransfer" : {
+    "_id" : "wm-goToPage_fundTransfer-wm.NavigationVariable-1724394999565",
+    "name" : "goToPage_fundTransfer",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "fundTransfer",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_Main" : {
     "_id" : "wm-wm.NavigationVariable1389180517517",
     "name" : "goToPage_Main",
